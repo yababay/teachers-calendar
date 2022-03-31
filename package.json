@@ -1,0 +1,45 @@
+{
+  "name": "svelte-meets-yababay",
+  "version": "0.0.1",
+  "scripts": {
+    "compile":     "rollup -c",
+    "dev":         "rollup -c -w",
+    "pug-html":    "rollup --config node_modules/@yababay67/svelte-meets-pug/scripts/rollup.html.js",  
+    "pug-static":  "rollup --config node_modules/@yababay67/svelte-meets-pug/scripts/rollup.static.js",  
+    "html":        "npm run pug-html",
+    "settings":    "npm run pug-html",
+    "sprite":      "npm run pug-static",
+    "index":       "npm run sprite && npm run html",
+    "build":       "npm run index && npm run compile",
+    "postinstall": "npm run pug-static && npm run pug-html && npm run readme",  
+    "pug-clean":   "rm -rf src/pug_modules && docs/pug-modules/",
+    "readme":      "cp README.md docs/content",
+    "venv":        "python3 -m venv .venv && echo Please do not forget to activate venv.",
+    "pip":         "pip3 install -r .venv/requirements.txt",
+    "git-content": "git init -b main && git add .gitignore docs/content docs/media/logo.svg src/settings.json README.md && git commit -am content && git checkout -b content && git checkout main && git add . && git commit -am first",
+    "gitignore":   "node ./scripts/setupGitignore.js",
+    "start":       "sirv docs --no-clear"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-run": "^2.1.0",
+    "n-readlines": "^1.0.1",
+    "recursive-copy": "^2.0.13",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-pug": "^1.1.1",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "jstransformer-markdown-it": "^2.1.0",
+    "sirv-cli": "^1.0.0",
+    "svelte": "^3.0.0"
+  },
+  "dependencies": {
+    "@yababay67/svelte-meets-pug": "^0.4.7",
+    "showdown": "^1.9.1"
+  }
+}
